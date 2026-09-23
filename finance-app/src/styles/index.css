@@ -1,0 +1,380 @@
+/* ==========================================================================
+   index.css — Market Dashboard global styles
+   Design tokens and component-scoped classes.
+   No external fonts, no animations, no gradients on chrome.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --color-bg:        #ffffff;
+  --color-surface:   #f7f8fa;
+  --color-border:    #e5e7eb;
+  --color-text:      #1f2328;
+  --color-muted:     #57606a;
+  --color-accent:    #3b82d4;
+  --color-up:        #2da44e;
+  --color-down:      #e05c3a;
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+
+  --font-sans: -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset / base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--font-sans);
+  font-size:   1rem;
+  line-height: 1.6;
+  color:       var(--color-text);
+  background:  var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+a { color: var(--color-accent); }
+
+/* --------------------------------------------------------------------------
+   3. AppShell
+   -------------------------------------------------------------------------- */
+.app-shell {
+  display:        flex;
+  flex-direction: column;
+  min-height:     100vh;
+}
+
+.app-header {
+  background:  var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-md) var(--space-lg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header__inner {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-md);
+  max-width:   1280px;
+  margin:      0 auto;
+}
+
+.app-header__logo { font-size: 1.5rem; }
+
+.app-header__title {
+  font-size:   1.2rem;
+  font-weight: 700;
+}
+
+.app-header__subtitle {
+  font-size: 0.8rem;
+  color:     var(--color-muted);
+}
+
+.app-main {
+  flex:       1;
+  max-width:  1280px;
+  width:      100%;
+  margin:     0 auto;
+  padding:    var(--space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   4. ErrorBoundary
+   -------------------------------------------------------------------------- */
+.error-boundary {
+  padding:       var(--space-xl);
+  text-align:    center;
+  border-radius: var(--radius-lg);
+  background:    var(--color-bg);
+  border:        1px solid var(--color-border);
+  margin:        var(--space-lg) 0;
+}
+
+.error-boundary h2 { margin-bottom: var(--space-sm); }
+
+.error-boundary__message {
+  color:         var(--color-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons
+   -------------------------------------------------------------------------- */
+.btn {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           var(--space-xs);
+  padding:       6px 14px;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background:    var(--color-bg);
+  color:         var(--color-text);
+  font-size:     0.85rem;
+  font-family:   inherit;
+  cursor:        pointer;
+  transition:    background 0.1s ease;
+}
+
+.btn:hover:not(:disabled) { background: var(--color-surface); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.btn--primary:hover:not(:disabled) { background: #2a6fb8; }
+
+.btn--small { padding: 3px 10px; font-size: 0.78rem; }
+
+.btn--icon {
+  padding:       6px 10px;
+  font-size:     1.1rem;
+  border-radius: var(--radius-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. Time Window Tabs
+   -------------------------------------------------------------------------- */
+.time-window-tabs {
+  display: flex;
+  gap:     var(--space-xs);
+}
+
+.time-window-tabs__tab {
+  padding:       6px 16px;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background:    var(--color-bg);
+  color:         var(--color-muted);
+  font-size:     0.875rem;
+  font-family:   inherit;
+  cursor:        pointer;
+  transition:    background 0.1s, color 0.1s;
+}
+
+.time-window-tabs__tab:hover {
+  background: var(--color-surface);
+  color:      var(--color-text);
+}
+
+.time-window-tabs__tab--active {
+  background:   var(--color-accent);
+  border-color: var(--color-accent);
+  color:        #ffffff;
+  font-weight:  600;
+}
+
+/* --------------------------------------------------------------------------
+   7. Dashboard Page
+   -------------------------------------------------------------------------- */
+.dashboard-page__controls {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-md);
+  margin-bottom: var(--space-lg);
+  flex-wrap:     wrap;
+}
+
+.dashboard-page__error {
+  padding:       var(--space-md);
+  background:    #fff5f5;
+  border:        1px solid #fecaca;
+  border-radius: var(--radius-md);
+  color:         var(--color-down);
+  margin-bottom: var(--space-md);
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-md);
+}
+
+/* --------------------------------------------------------------------------
+   8. Company Grid
+   -------------------------------------------------------------------------- */
+.company-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap:                   var(--space-md);
+}
+
+.company-grid--single { grid-template-columns: 1fr; }
+
+/* --------------------------------------------------------------------------
+   9. ChartCard
+   -------------------------------------------------------------------------- */
+.chart-card {
+  background:    var(--color-bg);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow:      hidden;
+}
+
+.chart-card__header {
+  display:      flex;
+  align-items:  baseline;
+  gap:          var(--space-sm);
+  padding:      var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+  border-left:  4px solid var(--color-accent); /* overridden inline per company */
+  background:   var(--color-surface);
+}
+
+.chart-card__symbol {
+  font-weight: 700;
+  font-size:   0.95rem;
+  font-family: var(--font-mono);
+}
+
+.chart-card__label {
+  font-size: 0.8rem;
+  color:     var(--color-muted);
+}
+
+.chart-card__body {
+  padding: var(--space-md);
+}
+
+.chart-card__loading { }
+
+.chart-card__error {
+  padding:    var(--space-md) 0;
+  text-align: center;
+}
+
+.chart-card__error-msg {
+  color:         var(--color-muted);
+  font-size:     0.85rem;
+  margin-bottom: var(--space-sm);
+}
+
+.chart-empty {
+  color:     var(--color-muted);
+  font-size: 0.85rem;
+  padding:   var(--space-md) 0;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   10. Skeleton loading
+   -------------------------------------------------------------------------- */
+@keyframes shimmer {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1;   }
+  100% { opacity: 0.6; }
+}
+
+.skeleton {
+  background:    var(--color-border);
+  border-radius: var(--radius-sm);
+  animation:     shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton--bar {
+  height:        180px;
+  width:         100%;
+  margin-bottom: var(--space-sm);
+}
+
+.skeleton--bar--short {
+  height: 24px;
+  width:  60%;
+}
+
+/* --------------------------------------------------------------------------
+   11. SummaryCard
+   -------------------------------------------------------------------------- */
+.summary-card {
+  border-top:    3px solid var(--color-accent); /* overridden inline per company */
+  border-radius: var(--radius-md);
+  border:        1px solid var(--color-border);
+  padding:       var(--space-md);
+  margin-bottom: var(--space-md);
+  background:    var(--color-surface);
+}
+
+.summary-card__header {
+  display:         flex;
+  justify-content: space-between;
+  align-items:     baseline;
+  margin-bottom:   var(--space-xs);
+}
+
+.summary-card__symbol {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size:   0.9rem;
+}
+
+.summary-card__name {
+  font-size: 0.8rem;
+  color:     var(--color-muted);
+}
+
+.summary-card__price {
+  font-size:     1.6rem;
+  font-weight:   700;
+  margin-bottom: var(--space-xs);
+}
+
+.summary-card__change {
+  font-size:     0.9rem;
+  font-weight:   600;
+  margin-bottom: var(--space-sm);
+}
+
+.summary-card__change--up   { color: var(--color-up);   }
+.summary-card__change--down { color: var(--color-down); }
+
+.summary-card__meta {
+  display:               grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  gap:                   2px var(--space-sm);
+  font-size:             0.78rem;
+  list-style:            none;
+}
+
+.summary-card__meta dt {
+  color:       var(--color-muted);
+  font-weight: 500;
+}
+
+.summary-card__meta dd {
+  font-family: var(--font-mono);
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .app-main { padding: var(--space-md); }
+
+  .company-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-page__controls { gap: var(--space-sm); }
+}
