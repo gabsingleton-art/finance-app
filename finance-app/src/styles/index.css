@@ -378,3 +378,110 @@ a { color: var(--color-accent); }
 
   .dashboard-page__controls { gap: var(--space-sm); }
 }
+
+/* --------------------------------------------------------------------------
+   13. CompanySearchBar
+   -------------------------------------------------------------------------- */
+.company-search-bar {
+  background:    var(--color-bg);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding:       var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.company-search-bar__row {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-md);
+  flex-wrap:   wrap;
+}
+
+.company-search-bar__label {
+  font-size:   0.85rem;
+  font-weight: 600;
+  color:       var(--color-muted);
+  white-space: nowrap;
+  min-width:   100px;
+}
+
+.company-search-bar__controls {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  flex:        1;
+  flex-wrap:   wrap;
+}
+
+.company-search-bar__input {
+  flex:          1;
+  min-width:     140px;
+  max-width:     200px;
+  padding:       6px 10px;
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size:     0.9rem;
+  font-family:   var(--font-mono);
+  text-transform: uppercase;
+  background:    var(--color-bg);
+  color:         var(--color-text);
+  outline:       none;
+  transition:    border-color 0.1s;
+}
+
+.company-search-bar__input:focus {
+  border-color: var(--color-accent);
+}
+
+.company-search-bar__input--error {
+  border-color: var(--color-down);
+}
+
+.company-search-bar__input:disabled {
+  opacity: 0.6;
+  cursor:  not-allowed;
+}
+
+.company-search-bar__error {
+  margin-top: var(--space-xs);
+  font-size:  0.8rem;
+  color:      var(--color-down);
+}
+
+/* --------------------------------------------------------------------------
+   14. CustomCompanyPanel
+   -------------------------------------------------------------------------- */
+.custom-company-panel {
+  margin-bottom: var(--space-md);
+}
+
+.custom-company-panel__heading {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.custom-company-panel__badge {
+  display:       inline-block;
+  padding:       2px 8px;
+  border-radius: 999px;
+  background:    var(--color-surface);
+  border:        1px solid var(--color-border);
+  font-size:     0.72rem;
+  font-weight:   600;
+  color:         var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.custom-company-panel__title {
+  font-size:   0.9rem;
+  font-weight: 600;
+  color:       var(--color-muted);
+}
+
+@media (max-width: 640px) {
+  .company-search-bar__row    { flex-direction: column; align-items: flex-start; }
+  .company-search-bar__input  { max-width: 100%; }
+}
